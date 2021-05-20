@@ -218,13 +218,13 @@ jobs:
           username: $DOCKERHUB_USERNAME
           password: $DOCKERHUB_TOKEN
     steps:
+      - checkout
       - attach_workspace:
           at: /tmp/coverage
       - run:
           name: Combine coverage reports
           command: |
-            mkdir -p reports
-            cp -R /tmp/coverage/* .
+            cp -R /tmp/coverage/coverage-*.json .
             npx istanbul-combine-updated coverage-*.json
       - run:
           name: Upload coverage
