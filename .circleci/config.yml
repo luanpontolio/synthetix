@@ -347,6 +347,10 @@ workflows:
       - job-unit-tests-coverage:
           requires:
             - job-prepare
+      - job-unit-tests-coverage-report:
+          requires:
+            - job-prepare
+            - job-unit-tests-coverage
       - job-unit-tests-gas-report:
           requires:
             - job-prepare
